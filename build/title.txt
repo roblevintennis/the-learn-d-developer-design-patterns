@@ -1,0 +1,2 @@
+% The Learn'd Developer: Design Patterns
+% Rob Levin

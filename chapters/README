@@ -1,0 +1,33 @@
+Cheat Sheet from:
+http://stackoverflow.com/questions/4779582/markdown-and-including-multiple-files
+
+...
+
+For example, if you were creating a book, then you could have chapters like this:
+
+01_preface.md
+02_introduction.md
+03_why_markdown_is_useful.md
+04_limitations_of_markdown.md
+05_conclusions.md
+You can merge them by doing executing this command within the same directory:
+
+pandoc *.md > markdown_book.html
+Since pandoc will merge all the files prior to doing the translation, you can include your links in the last file like this:
+
+01_preface.md
+02_introduction.md
+03_why_markdown_is_useful.md
+04_limitations_of_markdown.md
+05_conclusions.md
+06_links.md
+So part of your 01_preface.md could look like this:
+
+I always wanted to write a book with [markdown][mkdnlink].
+And part of your 02_introduction.md could look like this:
+
+Let's start digging into [the best text-based syntax][mkdnlink] available.
+As long as your last file includes the line:
+
+[mkdnlink]: http://daringfireball.net/projects/markdown
+...the same command used before will perform the merge and conversion while including that link throughout. Just make sure you leave a blank line or two at the beginning of that file. The pandoc documentation says that it adds a blank line between files that are merged this way, but this didn't work for me without the blank line.
