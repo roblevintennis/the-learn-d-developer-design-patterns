@@ -52,10 +52,10 @@ course, any issues in the github issue tracker.
 
 I feel obliged to commend Addy Osmani on his countless community contributions, particularly in developer education, and acknowledge that seeing the impact of his works inspired me to write myself. Also, the book: [Essential JS Design Patterns][addy] is where I shamelessly lifted the slightly tweaked pandoc build process being used here! 
 
+
 [addy]: https://github.com/addyosmani
 [sinon]: http://sinonjs.org/
 [mocha]: http://visionmedia.github.com/mocha/
-[JUnit4][junit] was used in [Eclpise][eclipse].
 [eclipse]: http://www.eclipse.org/
 [mockito]: http://code.google.com/p/mockito/
 [junit]: https://github.com/KentBeck/junit
