@@ -10,7 +10,8 @@ It is released under a Creative Commons Attribution-Noncommercial-No Derivative 
 
 We regenerate the book often. See the files named:
 the-learn-d-developer-design-patterns.xxx (where _xxx_ is the file
-extension).
+extension). Also, we try to keep an up to date version of the book here:
+[The Learn'd Developer: Design Patterns][learnd-dp]
 
 ## Building
 
@@ -52,7 +53,7 @@ course, any issues in the github issue tracker.
 
 I feel obliged to commend Addy Osmani on his countless community contributions, particularly in developer education, and acknowledge that seeing the impact of his works inspired me to write myself. Also, the book: [Essential JS Design Patterns][addy] is where I shamelessly lifted the slightly tweaked pandoc build process being used here! 
 
-
+[learnd-dp]: http://roblevintennis.github.com/the-learn-d-developer-design-patterns
 [addy]: https://github.com/addyosmani
 [sinon]: http://sinonjs.org/
 [mocha]: http://visionmedia.github.com/mocha/
