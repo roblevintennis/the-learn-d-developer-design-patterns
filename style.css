@@ -7,7 +7,7 @@ body {
   font:15px/1.4 'Droid Serif', Georgia, "Times New Roman", Times, serif;
   color:#333;
   font-weight:300;
-  background: #f1f1f1;
+  background: #f4f4f4;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -63,14 +63,14 @@ blockquote {
 code, pre {
   font-family: 'Droid Sans', Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, sans-serif;
   color:#333;
-  font-size:13px;
+  font-size:14px;
 }
 
 pre {
   padding:10px 15px;
-  background: #f8f8f8;  
+  background: #e4e4e4;  
   border-radius:5px;
-  border:2px solid #e5e5e5;
+  border:1px solid #ccc;
   overflow-x: auto;
 }
 
