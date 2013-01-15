@@ -11,6 +11,12 @@ body {
   max-width: 945px;
 }
 
+#TOC ul {
+  border: 1px solid #ddd;
+  padding: 20px 40px;
+  margin: 50px 0px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color:#222;
   margin:0 0 20px;
