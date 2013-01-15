@@ -33,6 +33,11 @@ h1, h2, h3 {
 
 h1 {
   font-size:28px;
+  margin: 100px 0 30px;
+  background: #EEE;
+  padding: 20px 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
 h2 {
