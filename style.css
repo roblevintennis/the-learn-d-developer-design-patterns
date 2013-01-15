@@ -11,7 +11,7 @@ body {
   max-width: 945px;
 }
 
-#TOC ul {
+#TOC {
   border: 1px solid #ddd;
   padding: 20px 40px;
   margin: 50px 0px;
