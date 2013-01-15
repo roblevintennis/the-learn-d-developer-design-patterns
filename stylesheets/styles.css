@@ -38,6 +38,7 @@ h1 {
   padding: 20px 20px;
   border-radius: 5px;
   border: 1px solid #ddd;
+  box-shadow: 0 3px 22px #dedede, 0 3px 2px #888;
 }
 
 h2 {
