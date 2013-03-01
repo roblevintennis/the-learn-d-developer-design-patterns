@@ -1,5 +1,4 @@
 
-
 # Introduction
 
 **Why should we study design patterns?**
@@ -29,5 +28,5 @@ We will discuss several, but not all, of the [GoF][gof] patterns, since they lay
 
 #### Pattern Structures
 
-Formal design pattern descriptions are known to adhere to certain well-defined _pattern structures_. [Christopher Alexandar][christopher_alexandar] is an architecture academic who, while pioneering the whole design pattern concept in the first place, provided the [Alexandrian Form][alexandrian_form]. The _Gang of Four_ uses the [Portland Form][portland_form] (which includes no less than: _intent, motivation, applicability, structure, implementation, sample code, known uses, and related patterns sections_). 
+Formal design pattern descriptions are known to adhere to certain well-defined _pattern structures_. [Christopher Alexander][christopher_alexander] is an architecture academic who, while pioneering the whole design pattern concept in the first place, provided the [Alexandrian Form][alexandrian_form]. The _Gang of Four_ uses the [Portland Form][portland_form] (which includes no less than: _intent, motivation, applicability, structure, implementation, sample code, known uses, and related patterns sections_). 
 
