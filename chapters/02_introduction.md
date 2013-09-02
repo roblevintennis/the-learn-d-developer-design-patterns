@@ -1,4 +1,3 @@
-
 # Introduction
 
 **Why should we study design patterns?**
@@ -22,7 +21,7 @@ _If you already have a lot of experience doing test-driven development, you may 
 
 ### Design Patterns
 
-We would be remiss not to mention the pioneers known as the _Gang of Four_ who, with their book [Design Patterns: Elements of Reusable Object-Oriented Software][design_patterns_book], described several reusable patterns that can be used to solve common recurring software design dilemnas.
+We would be remiss not to mention the pioneers known as the _Gang of Four_ who, with their book [Design Patterns: Elements of Reusable Object-Oriented Software][design_patterns_book], described several reusable patterns that can be used to solve common recurring software design dilemmas.
 
 We will discuss several, but not all, of the [GoF][gof] patterns, since they lay the framework from which new design patterns have evolved. As every pattern has its pros and cons, we will list the ones we've noticed as applicable. As we cover each particular pattern, we will not be adhering to any rigid _pattern structures_ like those presented in the following section. Our goal is to distill the material in an accessible way. Hence, we advise you to view this book as a supplementary material on the subject.
 
