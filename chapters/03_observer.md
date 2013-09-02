@@ -1,4 +1,3 @@
-
 # Observer Pattern
 
 **Tip:** _This is a long chapter that goes through the TDD process with a fine tooth comb. If you're already comfortable with TDD, feel free to [skip to the bottom](#final-implementation) to see the implementation._
@@ -9,13 +8,13 @@ Wikipedia describes the [Observer Pattern][observer_wiki] as follows:
 
 > The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods...
 
-There are many event based systems that are quite [similar][alternative_observers] in spirit to the Observer pattern such as: [Pub/Sub][pubsub], [EventEmitter][event_emitter] ([node.js][node]), [NSNotification][ios] ([Cocoa][cocoa]), etc. These all have in common the ability to dynamically notify one to many interested parties via some sort of broadcast mechanism. In the case of the Observer, a _subject_ calls the <code>update</code> method of one to many _boserver_ instances (it does this without needing to know anything specific about these parties other than that they implement a common interface to recieve said notifications). In object oriented circles, this decoupled use of composition and interfaces is called [_programming to an interface not an implementation_][program_to_interface]. This is a key object oriented principle that allows us to maintain orthogonality in our systems. 
+There are many event based systems that are quite [similar][alternative_observers] in spirit to the Observer pattern such as: [Pub/Sub][pubsub], [EventEmitter][event_emitter] ([node.js][node]), [NSNotification][ios] ([Cocoa][cocoa]), etc. These all have in common the ability to dynamically notify one to many interested parties via some sort of broadcast mechanism. In the case of the Observer, a _subject_ calls the <code>update</code> method of one to many _boserver_ instances (it does this without needing to know anything specific about these parties other than that they implement a common interface to receive said notifications). In object oriented circles, this decoupled use of composition and interfaces is called [_programming to an interface not an implementation_][program_to_interface]. This is a key object oriented principle that allows us to maintain orthogonality in our systems. 
 
 Another feature of this pattern is that observers can be added or removed at runtime—thus providing a means to "hot swap" components easily when needed.
 
 At its core the pattern involves the following steps:
 
-1. Allow _observers_ to register (and also unregister) to recieve notifications.
+1. Allow _observers_ to register (and also unregister) to receive notifications.
 
 2. Keep these observer instances in a suitable data structure such as a _List_ or _Array_.
 
@@ -39,7 +38,7 @@ _Note that there can be 1..* concrete subjects or observers._
 
 ## Implementing Observer Pattern using TDD
 
-Let's use TDD to implement this pattern. Specifically, we'll be writing [unit tests][unit_testing] to test our Observer Pattern implementation as an isolated unit. Please be forwarned that I'll start out going through each and every "Red, Green, Refactor" cycle (so you can get a feel for this process), but will eventually start to condense things as we move forward.  We'll be using the [phpunit framework][phpunit] for this chapter so make sure you have that installed if you'd like to follow along.
+Let's use TDD to implement this pattern. Specifically, we'll be writing [unit tests][unit_testing] to test our Observer Pattern implementation as an isolated unit. Please be forewarned that I'll start out going through each and every "Red, Green, Refactor" cycle (so you can get a feel for this process), but will eventually start to condense things as we move forward.  We'll be using the [phpunit framework][phpunit] for this chapter so make sure you have that installed if you'd like to follow along.
 
 ```php
 <?php
@@ -309,7 +308,7 @@ _Note that getNumberOfObservers is a method that I took the liberty of creating 
 
 **DRY (don't repeat yourself)**
 
-Ok, that looks better but I don't like our <code>testUnsubscribing</code> spec. It's too long for such a simple test and also, if you look caefully at <code>testSubscribing</code>, you'll see that we have duplicate code breaking the [DRY Principle][dry]. Essentially, the DRY principle states that we want to avoid duplication since that requires us to maintain duplicate code bases in parallel.
+Ok, that looks better but I don't like our <code>testUnsubscribing</code> spec. It's too long for such a simple test and also, if you look carefully at <code>testSubscribing</code>, you'll see that we have duplicate code breaking the [DRY Principle][dry]. Essentially, the DRY principle states that we want to avoid duplication since that requires us to maintain duplicate code bases in parallel.
 
 **Setup and Teardown**
 
@@ -361,7 +360,7 @@ class ObserverTests extends PHPUnit_Framework_TestCase
 
 You should now notice that—since our last refactoring—the test case has become much more readable and easy to understand. Thus we didn't just reduce duplication (but more importantly) made our tests [self documenting][self_documenting].
 
-For this exercise, we're using phpunit's setUp/tearDown combination (similar to JUnit if you're a Java developer), but you'll see other similar hooks in other frameworks like beforeEach/afterEach ([Jasmine][jasmine]), begin/done ([QUnit][qunit]), etc. These methods are called just before and after each test case allowng you to set up (and tear down) state. This ensures that each test is ran in isolation not depending on any leftover state from previous test case runs.
+For this exercise, we're using phpunit's setUp/tearDown combination (similar to JUnit if you're a Java developer), but you'll see other similar hooks in other frameworks like beforeEach/afterEach ([Jasmine][jasmine]), begin/done ([QUnit][qunit]), etc. These methods are called just before and after each test case allowing you to set up (and tear down) state. This ensures that each test is ran in isolation not depending on any leftover state from previous test case runs.
 
 **Helpers**
 
@@ -393,7 +392,7 @@ _The above helper method is a direct lift from the **rollMany** helper function 
 Determining just what to test is a difficult task but here are some general guidelines to help with that process.
 
 #### Structured Basis Testing
-The main idea of [Structured Basis Testing][structured_basis_testing] is that your test cases, for a particular peice of code, are derived from the code's logic and you try to have tests in place for every possible branch. So at it's simplest:
+The main idea of [Structured Basis Testing][structured_basis_testing] is that your test cases, for a particular piece of code, are derived from the code's logic and you try to have tests in place for every possible branch. So at it's simplest:
 
 ```php
 <?php
@@ -420,15 +419,15 @@ This is also sometimes referred to as _logic coverage testing_. The programmer's
 
 When you test production code that can take a range of valid values, use just below minimum, minimum, maximum, and just below and exceeding maximum values. This takes discipline and time (but given that boundaries are likely places where errors creep up) it's well worth the effort. 
 
-_Also keep in mind that there might be compound boundaries when 2 or more variables interact. An obvious example is when you multiply two numbers. In this case, you have the potential to inadvertantly exceed the maximum value._
+_Also keep in mind that there might be compound boundaries when 2 or more variables interact. An obvious example is when you multiply two numbers. In this case, you have the potential to inadvertently exceed the maximum value._
 
 #### Known Error Testing
-Is there an area that is likely to be problemattic? If so, make sure to test for that area.
+Is there an area that is likely to be problematic ? If so, make sure to test for that area.
 
 An example might be if you were to implement a "time picker". Setting aside time zone and daylight savings concerns, we'd want heavy coverage on times known to be error prone such as: 00:00, 12:00am, 12:00pm (keep in mind the user's time format might be 12 or 24 hour format!) In addition, you may also want to use: 23:59, 11:59pm, 11:59am, 00:01, 12:01am, 12:01pm, etc.
 
 #### Data-Flow Testing
-This is also discussed in the [Code Complete 2][code_complete2] book, and you should turn to that resource for more in depth coverage. However, essentially, data-flow testing provides that _data usage_ is just as problemattic as control flow, and that you therefore need to take into account of the various possible states your data structures might be in (e.g. Defined, Used, Killed, Entered, Exited, etc.) Data flow testing is beyond the scope of this book but you can read more in [this paper][data_flow_testing] if you're interested.
+This is also discussed in the [Code Complete 2][code_complete2] book, and you should turn to that resource for more in depth coverage. However, essentially, data-flow testing provides that _data usage_ is just as problematic as control flow, and that you therefore need to take into account of the various possible states your data structures might be in (e.g. Defined, Used, Killed, Entered, Exited, etc.) Data flow testing is beyond the scope of this book but you can read more in [this paper][data_flow_testing] if you're interested.
 
 #### Cross Checking
 If you have to implement something that's been reliably implemented elsewhere, you may be able to _cross check_ your results against the existing implementation:
@@ -440,7 +439,7 @@ assertEquals(actual, expected,
 "My implementation of square root should be same as Java's");
 ```
 
-_In this chapter, we are focusing on using TDD to unit test our Observer implementation thus leaving out many other important types of testing: [Integration Testing][integration_testing], [Systems Testing][system_testing], [Stress Testing][stress_testing], etc. In a real system, you will ideally have a suite of complimentary tests that include all of the aformentioned within an [Continuous Integration System][ci]. You should also consider using a tool to measure your [test code coverage][code_cov]._
+_In this chapter, we are focusing on using TDD to unit test our Observer implementation thus leaving out many other important types of testing: [Integration Testing][integration_testing], [Systems Testing][system_testing], [Stress Testing][stress_testing], etc. In a real system, you will ideally have a suite of complimentary tests that include all of the aforementioned within an [Continuous Integration System][ci]. You should also consider using a tool to measure your [test code coverage][code_cov]._
 
 ### Testing both the "happy" and "sad" paths
 
@@ -1057,7 +1056,7 @@ It should also be noted there are different strategies for how the state is obta
 $subject->getState()
 ```
 
-Thus, upon being notified, we "pulled in" the changes from the subject. However, the inverse is also possible—where the subject _pushes_ changes down to the observers—and, approriately enough, is called the _push method_. An example of how _push method_ might work is the following:
+Thus, upon being notified, we "pulled in" the changes from the subject. However, the inverse is also possible—where the subject _pushes_ changes down to the observers—and, appropriately enough, is called the _push method_. An example of how _push method_ might work is the following:
 
 ```php
 $observer->update($this, $user, $trackPlayed, 
@@ -1083,15 +1082,15 @@ The following are some potential issues to look out for when implementing Observ
 
 * **Relationship hierarchies**: Insidious coupling can occur if you allow observers to interact with each other. Strive to design observers to be completely unaware of each other.
 
-* **Wasteful updates**: If an observer only has a particular _interest_, recieving all updates is wasteful. This can be remedied by adding an _interest_ input to the _register_ signature and checking on a per observer basis before broadcasting to that observer.
+* **Wasteful updates**: If an observer only has a particular _interest_, receiving all updates is wasteful. This can be remedied by adding an _interest_ input to the _register_ signature and checking on a per observer basis before broadcasting to that observer.
 
-* **Spurious updates**: In a high throughput system with many observers, there are potential temporal issues. For example, a call to <code>setState()</code> before a previous state has been fully pushed out could result in notifications being sent to observers that have yet to receieve the previous state. The obvious workaround is to queue these states and only start notifications for the "newest state" once "previous state" notification are complete. This of course adds additional complexity.
+* **Spurious updates**: In a high throughput system with many observers, there are potential temporal issues. For example, a call to <code>setState()</code> before a previous state has been fully pushed out could result in notifications being sent to observers that have yet to receive the previous state. The obvious workaround is to queue these states and only start notifications for the "newest state" once "previous state" notification are complete. This of course adds additional complexity.
 
 * **Unpredictable ordering**: This pattern does not provide predictable ordering of observer updates and doing so increases coupling.
 
 * **Inconsistent state**: If setting state is more than a simple assignment, you must ensure _consistent state_ before broadcasting updates.
 
-* **Duplicate observers**: It's easy to inadvertandly create a system where an observer is recieving "double updates" as a result of duplicates observers having been registered.
+* **Duplicate observers**: It's easy to inadvertently create a system where an observer is receiving "double updates" as a result of duplicates observers having been registered.
 
 _We have other decisions to make when we design our implementation (who should call notify? what happens when a subject is deleted? will there be orphaned observers?). These require further research and are beyond the scope of this chapter._
 
