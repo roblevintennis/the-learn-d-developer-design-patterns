@@ -56,7 +56,7 @@ I feel obliged to commend Addy Osmani on his countless community contributions, 
 [learnd-dp]: http://roblevintennis.github.com/the-learn-d-developer-design-patterns
 [addy]: https://github.com/addyosmani
 [sinon]: http://sinonjs.org/
-[mocha]: http://visionmedia.github.com/mocha/
+[mocha]: http://mochajs.org/
 [eclipse]: http://www.eclipse.org/
 [mockito]: http://code.google.com/p/mockito/
 [junit]: https://github.com/KentBeck/junit
